@@ -1,6 +1,6 @@
-# Potentia Ludi 🎮💬
+# Potentia Ludi 🎮💬🧠
 
-## Conversational Web3 Wallet Hub
+## On-chain Web3 gaming Wallet Hub
 
 A Universal On-Chain Gaming Wallet Hub with natural language capabilities – interact with Web3 through simple conversations. Just say "swap 100 USDC to ETH" or "show my NFT balance" and let AI handle the complexity. The app auto-detects games, optimizes gas, swaps tokens, tracks rewards across chains, and generates creator-ready clips.
 
