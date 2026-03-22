@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { useGamingWalletStore } from '../store/gamingWalletStore';
 import { gameDetectionService } from '../services/gameDetection';
 import { gasOptimizationService } from '../services/gasOptimization';
@@ -7,6 +8,7 @@ import WalletDashboard from './WalletDashboard';
 import DetectedGames from './DetectedGames';
 import RewardsPanel from './RewardsPanel';
 import ClipsGallery from './ClipsGallery';
+import NotesPage from './NotesPage';
 
 /* CHILD_CHUNK: App Component - Main Structure (300 tokens) */
 /**
@@ -52,36 +54,47 @@ const App: React.FC = () => {
    * Contains header, main grid with four sections, and footer
    */
   return (
-    <div style={styles.app}>
-      <header style={styles.header}>
-        <h1 style={styles.title}>🎮 Potentia Ludi</h1>
-        <p style={styles.subtitle}>Universal On-Chain Gaming Wallet Hub</p>
-      </header>
+    <BrowserRouter>
+      <div style={styles.app}>
+        <header style={styles.header}>
+          <h1 style={styles.title}>🎮 Potentia Ludi</h1>
+          <p style={styles.subtitle}>Universal On-Chain Gaming Wallet Hub</p>
+          <nav style={styles.nav}>
+            <Link to="/" style={styles.navLink}>Home</Link>
+            <Link to="/notes" style={styles.navLink}>Notes</Link>
+          </nav>
+        </header>
 
-      <main style={styles.main}>
-        <div style={styles.grid}>
-          <div style={styles.section}>
-            <WalletDashboard />
-          </div>
+        <Routes>
+          <Route path="/notes" element={<NotesPage />} />
+          <Route path="/" element={
+            <main style={styles.main}>
+              <div style={styles.grid}>
+                <div style={styles.section}>
+                  <WalletDashboard />
+                </div>
 
-          <div style={styles.section}>
-            <DetectedGames />
-          </div>
+                <div style={styles.section}>
+                  <DetectedGames />
+                </div>
 
-          <div style={styles.section}>
-            <RewardsPanel />
-          </div>
+                <div style={styles.section}>
+                  <RewardsPanel />
+                </div>
 
-          <div style={styles.section}>
-            <ClipsGallery />
-          </div>
-        </div>
-      </main>
+                <div style={styles.section}>
+                  <ClipsGallery />
+                </div>
+              </div>
+            </main>
+          } />
+        </Routes>
 
-      <footer style={styles.footer}>
-        <p>Powered by Multi-Chain Web3 Technology</p>
-      </footer>
-    </div>
+        <footer style={styles.footer}>
+          <p>Powered by Multi-Chain Web3 Technology</p>
+        </footer>
+      </div>
+    </BrowserRouter>
   );
   /* END CHILD_CHUNK */
 };
@@ -115,6 +128,18 @@ const styles = {
     fontSize: '1.1rem',
     margin: 0,
     color: '#a0a0a0',
+  },
+  nav: {
+    marginTop: '1rem',
+    display: 'flex',
+    gap: '1.5rem',
+    justifyContent: 'center',
+  },
+  navLink: {
+    color: '#00d9ff',
+    textDecoration: 'none',
+    fontSize: '1rem',
+    fontWeight: 500,
   },
   /* END CHILD_CHUNK */
   
